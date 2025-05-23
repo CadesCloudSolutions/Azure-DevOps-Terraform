@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountTier": {
+            "type": "string",
+            "metadata": {
+                "description": "Tier of storage account. Possible values are 'Standard' and 'Premium'."
+            },
+            "defaultValue": "Premium",
+            "allowedValues": [
+                "Standard",
+                "Premium"
+            ]
+        }
+    },
+    "functions": [],
+    "variables": {
+        "resourceName": "ccsdemostorage514854"
+    },
+    "resources": [
+        {
+            "name": "[variables('resourceName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2023-01-01",
+            "tags": {
+                "displayName": "cadesinastorage11232"
+            },
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Premium_LRS",
+                "tier": "[parameters('storageAccountTier')]",
+            }
+        }
+    ],
+    "outputs": {}
+}
+
